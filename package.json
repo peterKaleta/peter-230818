@@ -7,6 +7,7 @@
     "start": " ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --mode development",
     "start-api": "./node_modules/.bin/babel-node server-storage-api/index.js",
     "dev-api": "./node_modules/nodemon/bin/nodemon.js --watch ./server-storage-api --ext js --exec node_modules/.bin/babel-node ./server-storage-api/index.js",
+    "lint": "./node_modules/.bin/eslint --format \"node_modules/eslint-friendly-formatter\" client/ server-storage-api/",
     "build": " webpack --config webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -52,6 +53,7 @@
     "css-loader": "^1.0.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^17.1.0",
+    "eslint-friendly-formatter": "^4.0.1",
     "eslint-loader": "^2.1.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
