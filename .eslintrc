@@ -5,7 +5,10 @@
         "jsx-a11y"
     ],
     "rules": {
-        "semi": ["error", "never"]
+        "semi": ["error", "never"],
+        "implicit-arrow-linebreak": 0,
+        "import/no-named-as-default-member": 0,
+        "import/prefer-default-export": 0
     },
     "settings": {
         "import/resolver": {
