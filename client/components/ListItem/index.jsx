@@ -38,7 +38,7 @@ class ListItem extends React.Component {
           <input value={ tempName } onChange={ this.onTempNameInputUpdate }/>
           <button onClick={ this.onTempNameSubmit }>Save</button>
         </div>
-      : <div onClick={ this.startEdit }>{ filename }</div>
+      : <div className="itemLabel" onClick={ this.startEdit }>{ filename }</div>
   }
 
   render() {

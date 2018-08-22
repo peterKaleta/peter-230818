@@ -2,7 +2,8 @@
     "parser": "babel-eslint",
     "plugins": [
         "react",
-        "jsx-a11y"
+        "jsx-a11y",
+        "jest"
     ],
     "rules": {
         "semi": ["error", "never"],
@@ -23,7 +24,8 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:jest/recommended"
     ],
     "env": {
         "browser": true
