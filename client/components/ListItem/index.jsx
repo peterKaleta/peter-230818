@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Button, FormControl } from 'react-bootstrap'
 
 class ListItem extends React.Component {
   static propTypes = {
@@ -34,18 +35,23 @@ class ListItem extends React.Component {
     const { isEditing, tempName } = this.state
     const { filename } = this.props
     return isEditing
-      ? <div>
-          <input value={ tempName } onChange={ this.onTempNameInputUpdate }/>
-          <button onClick={ this.onTempNameSubmit }>Save</button>
+      ? <div className="list-item-edit">
+            <FormControl
+              type="text"
+              value={tempName}
+              placeholder="Item Name"
+              onChange={this.onTempNameInputUpdate}
+            />
+          <Button onClick={ this.onTempNameSubmit } bsStyle="info">Save</Button>
         </div>
-      : <div className="itemLabel" onClick={ this.startEdit }>{ filename }</div>
+      : <div className="list-item-label" onClick={ this.startEdit }>{ filename }</div>
   }
 
   render() {
     const { filename, onRemove } = this.props
-    return (<div>
+    return (<div className="list-item">
       { this.renderLabel() }
-      <div onClick={ () => onRemove(filename) }>X</div>
+      <Button onClick={ () => onRemove(filename) } bsStyle="danger">X</Button>
     </div>)
   }
 }

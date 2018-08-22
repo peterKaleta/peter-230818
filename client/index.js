@@ -8,7 +8,7 @@ import { ConnectedRouter } from 'connected-react-router/immutable'
 import createBrowserHistory from 'history/createBrowserHistory'
 
 import App from './containers/App'
-import './assets/main.css'
+import './assets/main.scss'
 
 import configureStore from './configureStore'
 

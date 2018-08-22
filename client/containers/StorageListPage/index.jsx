@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
@@ -34,15 +34,17 @@ class StorageListPage extends React.Component {
       { ...item }
     />)
 
+  renderNoItemsLabel = () => <div className="info">Your storage is empty</div>
+
   render() {
     return (
-      <Fragment>
-        <Dropzone multiple="false" className="drop-zone" onDrop={ this.props.uploadStorageItem }>
+      <div className="storage-list">
+        <Dropzone multiple={ false } className="drop-zone" onDrop={ this.props.uploadStorageItem }>
           <p className="drop-zone-label">Click to upload a file</p>
         </Dropzone>
         <Searchbar onUpdate={ throttle(q => this.props.fetchStorageList(q), 800) } />
-        { this.renderListItems() }
-      </Fragment>
+        { this.props.files.size ? this.renderListItems() : this.renderNoItemsLabel() }
+      </div>
     )
   }
 }
