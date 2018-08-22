@@ -4,17 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import * as storeActions from '../../actions/storage'
-
-const ListItem = ({ filename, onRemove }) =>
-  <div>
-    { filename }
-    <div onClick={ () => onRemove(filename) }>X</div>
-  </div>
-
-ListItem.propTypes = {
-  filename: PropTypes.string,
-  onRemove: PropTypes.func,
-}
+import ListItem from '../../components/ListItem'
 
 class StorageListPage extends React.Component {
   static propTypes = {
