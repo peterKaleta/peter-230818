@@ -3,8 +3,10 @@ import PropTypes from 'prop-types'
 import ImmutablePropTypes from 'react-immutable-proptypes'
 import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
+import { throttle } from 'lodash'
 import * as storeActions from '../../actions/storage'
 import ListItem from '../../components/ListItem'
+import Searchbar from '../../components/Searchbar'
 
 class StorageListPage extends React.Component {
   static propTypes = {
@@ -36,6 +38,7 @@ class StorageListPage extends React.Component {
     return (
       <Fragment>
         <Dropzone onDrop={ this.props.uploadStorageItem }/>
+        <Searchbar onUpdate={ throttle(q => this.props.fetchStorageList(q), 800) } />
         { this.renderListItems() }
       </Fragment>
     )

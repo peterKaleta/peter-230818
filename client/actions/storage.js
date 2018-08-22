@@ -1,12 +1,14 @@
+import qs from 'qs'
 import queryApi from '../utils/apiClient'
 
 export const STORAGE_FETCH_INIT = 'STORAGE_FETCH_INIT'
 export const STORAGE_FETCH_SUCCESS = 'STORAGE_FETCH_SUCCESS'
-export const fetchStorageList = () => async (dispatch) => {
+export const fetchStorageList = query => async (dispatch) => {
   dispatch({
     type: STORAGE_FETCH_INIT,
   })
-  const result = await queryApi('/storage')
+  const queryString = qs.stringify({ q: query })
+  const result = await queryApi(`/storage?${queryString}`)
   dispatch({
     type: STORAGE_FETCH_SUCCESS,
     payload: {
