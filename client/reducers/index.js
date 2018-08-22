@@ -3,14 +3,12 @@ import { combineReducers } from 'redux-immutable'
 import { LOCATION_CHANGE } from 'connected-react-router/immutable'
 
 import appReducer from '../containers/App/reducer'
+import storageReducer from './storage'
 
 const routeInitialState = fromJS({
   location: '/',
 })
 
-/**
- * Merge route into the global application state
- */
 export function routeReducer(state = routeInitialState, action) {
   switch (action.type) {
     /* istanbul ignore next */
@@ -27,5 +25,6 @@ export default function createReducer() {
   return combineReducers({
     route: routeReducer,
     app: appReducer,
+    storage: storageReducer,
   })
 }
