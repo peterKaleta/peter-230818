@@ -37,7 +37,9 @@ class StorageListPage extends React.Component {
   render() {
     return (
       <Fragment>
-        <Dropzone onDrop={ this.props.uploadStorageItem }/>
+        <Dropzone multiple="false" className="drop-zone" onDrop={ this.props.uploadStorageItem }>
+          <p className="drop-zone-label">Click to upload a file</p>
+        </Dropzone>
         <Searchbar onUpdate={ throttle(q => this.props.fetchStorageList(q), 800) } />
         { this.renderListItems() }
       </Fragment>

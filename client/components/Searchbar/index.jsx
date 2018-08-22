@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { FormControl } from 'react-bootstrap'
 
 class SearchBar extends React.Component {
   static propTypes = {
@@ -26,8 +27,13 @@ class SearchBar extends React.Component {
 
   render() {
     const { query } = this.state
-    return (<div>
-      <input value={ query } onChange={ this.onUpdateQuery }/>
+    return (<div className="search-bar-wrapper">
+      <FormControl
+        type="text"
+        value={query}
+        placeholder="Search storage"
+        onChange={this.onUpdateQuery}
+      />
     </div>)
   }
 }
