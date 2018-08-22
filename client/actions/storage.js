@@ -2,7 +2,6 @@ import queryApi from '../utils/apiClient'
 
 export const STORAGE_FETCH_INIT = 'STORAGE_FETCH_INIT'
 export const STORAGE_FETCH_SUCCESS = 'STORAGE_FETCH_SUCCESS'
-
 export const fetchStorageList = () => async (dispatch) => {
   dispatch({
     type: STORAGE_FETCH_INIT,
@@ -18,7 +17,6 @@ export const fetchStorageList = () => async (dispatch) => {
 
 export const STORAGE_DELETE_ITEM_INIT = 'STORAGE_DELETE_ITEM_INIT'
 export const STORAGE_DELETE_ITEM_SUCCESS = 'STORAGE_DELETE_ITEM_SUCCESS'
-
 export const removeStorageItem = filename => async (dispatch) => {
   dispatch({
     type: STORAGE_DELETE_ITEM_INIT,
@@ -30,5 +28,24 @@ export const removeStorageItem = filename => async (dispatch) => {
   dispatch({
     type: STORAGE_DELETE_ITEM_SUCCESS,
     payload: { filename },
+  })
+}
+
+export const STORAGE_UPLOAD_ITEM_INIT = 'STORAGE_UPLOAD_ITEM_INIT'
+export const STORAGE_UPLOAD_ITEM_SUCCESS = 'STORAGE_UPLOAD_ITEM_SUCCESS'
+export const uploadStorageItem = files => async (dispatch) => {
+  dispatch({
+    type: STORAGE_UPLOAD_ITEM_INIT,
+  })
+  const data = new FormData()
+  files.forEach(file => data.append(file.name, file))
+  const result = await queryApi('/storage/files', {
+    method: 'POST',
+    forceMultipart: true,
+    body: data,
+  })
+  dispatch({
+    type: STORAGE_UPLOAD_ITEM_SUCCESS,
+    payload: result,
   })
 }

@@ -1,10 +1,11 @@
 import { isObject } from 'lodash'
 import config from './config'
 
+const JSON_CONTENT_TYPE = 'application/json'
+
 const SUCCESS_STATUS_CODES = [0, 200, 201]
 const REQ_HEADERS = {
   Accept: 'application/json',
-  'Content-Type': 'application/json',
   'api-key': config.API_KEY,
 }
 
@@ -24,7 +25,9 @@ export const query = (path, options = {}) => {
       ...options.headers,
     },
   }
-  if (options.body) {
+
+  if (options.body && !options.forceMultipart) {
+    opts.headers['Content-Type'] = JSON_CONTENT_TYPE
     opts.body = processBody(options.body)
   }
   return fetch(getApiUrl(path), opts)

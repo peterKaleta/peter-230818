@@ -22,6 +22,8 @@ class StorageListPage extends React.Component {
     files: ImmutablePropTypes.list,
     fetchStorageList: PropTypes.func,
     removeStorageItem: PropTypes.func,
+    uploadStorageItem: PropTypes.func,
+
   }
 
   static defaultProps = {
@@ -39,8 +41,8 @@ class StorageListPage extends React.Component {
   render() {
     return (
       <Fragment>
-      { this.renderListItems() }
-      <Dropzone />
+        <Dropzone onDrop={ this.props.uploadStorageItem }/>
+        { this.renderListItems() }
       </Fragment>
     )
   }
@@ -54,6 +56,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = {
   fetchStorageList: storeActions.fetchStorageList,
   removeStorageItem: storeActions.removeStorageItem,
+  uploadStorageItem: storeActions.uploadStorageItem,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StorageListPage)
