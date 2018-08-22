@@ -1,3 +1,4 @@
+import { isObject } from 'lodash'
 import config from './config'
 
 const SUCCESS_STATUS_CODES = [0, 200, 201]
@@ -13,6 +14,7 @@ export const processStatus = response =>
   SUCCESS_STATUS_CODES.includes(response.status)
     ? Promise.resolve(response)
     : Promise.reject(response)
+export const processBody = (body = {}) => isObject(body) ? JSON.stringify(body) : body
 
 export const query = (path, options = {}) => {
   const opts = {
@@ -21,6 +23,9 @@ export const query = (path, options = {}) => {
       ...REQ_HEADERS,
       ...options.headers,
     },
+  }
+  if (options.body) {
+    opts.body = processBody(options.body)
   }
   return fetch(getApiUrl(path), opts)
     .then(processStatus)
