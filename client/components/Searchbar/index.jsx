@@ -2,14 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 class SearchBar extends React.Component {
-
   static propTypes = {
     onUpdateQuery: PropTypes.func,
+    onUpdate: PropTypes.func,
   }
 
   constructor(props) {
     super(props)
-    const { filename: initialFilename } = props
     this.state = {
       query: '',
     }
@@ -18,8 +17,9 @@ class SearchBar extends React.Component {
   startEdit = () => {
     this.setState({ isEditing: true })
   }
+
   onUpdateQuery = (e) => {
-    const query = e.target.value;
+    const query = e.target.value
     this.setState({ query })
     this.props.onUpdate(query)
   }

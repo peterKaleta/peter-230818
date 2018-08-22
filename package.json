@@ -7,7 +7,7 @@
     "start": " ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --mode development",
     "start-api": "./node_modules/.bin/babel-node server-storage-api/index.js",
     "dev-api": "./node_modules/nodemon/bin/nodemon.js --watch ./server-storage-api --ext js --exec node_modules/.bin/babel-node ./server-storage-api/index.js",
-    "lint": "./node_modules/.bin/eslint --format \"node_modules/eslint-friendly-formatter\" client/ server-storage-api/",
+    "lint": "./node_modules/.bin/eslint --format \"node_modules/eslint-friendly-formatter\"  --ext .js --ext .jsx client server-storage-api",
     "build": " webpack --config webpack.config.js --mode development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
