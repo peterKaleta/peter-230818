@@ -1,5 +1,5 @@
 import { fromJS, List } from 'immutable'
-import { STORAGE_FETCH_INIT, STORAGE_FETCH_SUCCESS } from '../actions/storage'
+import { STORAGE_FETCH_INIT, STORAGE_FETCH_SUCCESS, STORAGE_DELETE_ITEM_SUCCESS } from '../actions/storage'
 
 const initialState = fromJS({
   loading: true,
@@ -12,6 +12,9 @@ export default function Storage(state = initialState, action) {
       return state.set('loading', true)
     case STORAGE_FETCH_SUCCESS:
       return state.set('files', new List(action.payload.items))
+    case STORAGE_DELETE_ITEM_SUCCESS:
+      return state.set('files', state.get('files')
+        .filter(({ filename }) => filename !== action.payload.filename))
     default:
       return state
   }

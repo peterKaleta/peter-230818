@@ -5,11 +5,23 @@ import { connect } from 'react-redux'
 import Dropzone from 'react-dropzone'
 import * as storeActions from '../../actions/storage'
 
+const ListItem = ({ filename, onRemove }) =>
+  <div>
+    { filename }
+    <div onClick={ () => onRemove(filename) }>X</div>
+  </div>
+
+ListItem.propTypes = {
+  filename: PropTypes.string,
+  onRemove: PropTypes.func,
+}
+
 class StorageListPage extends React.Component {
   static propTypes = {
     loading: PropTypes.bool,
     files: ImmutablePropTypes.list,
     fetchStorageList: PropTypes.func,
+    removeStorageItem: PropTypes.func,
   }
 
   static defaultProps = {
@@ -21,12 +33,13 @@ class StorageListPage extends React.Component {
     this.props.fetchStorageList()
   }
 
-  renderListItem = (item, i) => <div key={ i }>{ item.filename }</div>
+  renderListItems = () => this.props.files.map((item, i) =>
+    <ListItem key={ i } onRemove={ this.props.removeStorageItem } { ...item }/>)
 
   render() {
     return (
       <Fragment>
-      { this.props.files.map(this.renderListItem)}
+      { this.renderListItems() }
       <Dropzone />
       </Fragment>
     )
@@ -40,6 +53,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
   fetchStorageList: storeActions.fetchStorageList,
+  removeStorageItem: storeActions.removeStorageItem,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StorageListPage)
