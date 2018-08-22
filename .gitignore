@@ -75,3 +75,4 @@ typings/
 .DS_Store
 build
 .vscode
+server-storage-api/_stores

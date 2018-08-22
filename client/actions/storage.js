@@ -4,7 +4,7 @@ export const STORAGE_FETCH_INIT = 'STORAGE_FETCH_INIT'
 export const STORAGE_FETCH_SUCCESS = 'STORAGE_FETCH_SUCCESS'
 
 export const fetchStorageList = () => async (dispatch) => {
-  const result = await queryApi('/list')
+  const result = await queryApi('/storage')
   dispatch({
     type: STORAGE_FETCH_INIT,
   })
