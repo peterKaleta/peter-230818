@@ -7,7 +7,6 @@ import { Provider } from 'react-redux'
 import { ConnectedRouter } from 'connected-react-router/immutable'
 import createBrowserHistory from 'history/createBrowserHistory'
 
-// Import root app
 import App from './containers/App'
 
 import configureStore from './configureStore'

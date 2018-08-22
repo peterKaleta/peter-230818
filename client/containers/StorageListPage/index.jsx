@@ -13,7 +13,7 @@ class StorageListPage extends React.Component {
     fetchStorageList: PropTypes.func,
     removeStorageItem: PropTypes.func,
     uploadStorageItem: PropTypes.func,
-
+    updateStorageItem: PropTypes.func,
   }
 
   static defaultProps = {
@@ -26,7 +26,11 @@ class StorageListPage extends React.Component {
   }
 
   renderListItems = () => this.props.files.map((item, i) =>
-    <ListItem key={ i } onRemove={ this.props.removeStorageItem } { ...item }/>)
+    <ListItem key={ i }
+      onChangeName={ this.props.updateStorageItem }
+      onRemove={ this.props.removeStorageItem }
+      { ...item }
+    />)
 
   render() {
     return (
@@ -47,6 +51,7 @@ const mapDispatchToProps = {
   fetchStorageList: storeActions.fetchStorageList,
   removeStorageItem: storeActions.removeStorageItem,
   uploadStorageItem: storeActions.uploadStorageItem,
+  updateStorageItem: storeActions.updateStorageItem,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(StorageListPage)

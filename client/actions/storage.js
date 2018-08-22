@@ -49,3 +49,25 @@ export const uploadStorageItem = files => async (dispatch) => {
     payload: result,
   })
 }
+
+export const STORAGE_UPDATE_ITEM_INIT = 'STORAGE_UPDATE_ITEM_INIT'
+export const STORAGE_UPDATE_ITEM_SUCCESS = 'STORAGE_UPDATE_ITEM_SUCCESS'
+export const updateStorageItem = (filename, newFilename) => async (dispatch) => {
+  dispatch({
+    type: STORAGE_UPDATE_ITEM_INIT,
+  })
+  const result = await queryApi('/storage/files', {
+    method: 'PUT',
+    body: {
+      filename,
+      newFilename,
+    },
+  })
+  dispatch({
+    type: STORAGE_UPDATE_ITEM_SUCCESS,
+    payload: {
+      ...result,
+      oldFilename: filename,
+    },
+  })
+}

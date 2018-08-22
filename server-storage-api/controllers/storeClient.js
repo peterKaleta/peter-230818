@@ -7,13 +7,15 @@ import config from '../config'
 
 const getDir = key => `${config.STORE_DIR}/${key}/`
 const getFilePath = (key, filename) => `${config.STORE_DIR}/${key}/${filename}`
-const mapFileNameToType = filename => ({ filename, mimetype: lookup(filename) })
+const mapMimeType = filename => ({ filename, mimetype: lookup(filename) })
 
 export const create = key => fs.ensureDir(getDir(key))
-export const list = key => fs.readdir(getDir(key)).then(items => items.map(mapFileNameToType))
+export const list = key => fs.readdir(getDir(key)).then(items => items.map(mapMimeType))
 export const removeFile = (key, fileName) => fs.remove(getFilePath(key, fileName))
-export const renameFile = (key, oldName, newName) =>
-  fs.move(getFilePath(key, oldName), getFilePath(key, newName))
+export const renameFile = async (key, oldName, newName) => {
+  await fs.move(getFilePath(key, oldName), getFilePath(key, newName))
+  return mapMimeType(newName)
+}
 
 
 export const insertFile = async (req, res, key) => {

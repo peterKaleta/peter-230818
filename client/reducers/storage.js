@@ -4,6 +4,7 @@ import {
   STORAGE_FETCH_SUCCESS,
   STORAGE_DELETE_ITEM_SUCCESS,
   STORAGE_UPLOAD_ITEM_SUCCESS,
+  STORAGE_UPDATE_ITEM_SUCCESS,
 } from '../actions/storage'
 
 const initialState = fromJS({
@@ -22,6 +23,12 @@ export default function Storage(state = initialState, action) {
         .filter(({ filename }) => filename !== action.payload.filename))
     case STORAGE_UPLOAD_ITEM_SUCCESS:
       return state.set('files', state.get('files').push(action.payload))
+    case STORAGE_UPDATE_ITEM_SUCCESS: {
+      const { oldFilename, filename } = action.payload
+      return state.set('files', state.get('files')
+        .map(f => f.filename === oldFilename ? { ...f, filename } : f))
+    }
+
     default:
       return state
   }
