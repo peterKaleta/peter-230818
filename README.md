@@ -19,10 +19,10 @@ Video summarizing core functionalities https://drive.google.com/file/d/1pDvnyJ_q
   - `client`: standard redux flow loop  .-> Reducers -> Store -> HOCs -> Containers -> Componenets -> Dispatch -> .
   - `server`: middlewares(request meta processing) -> api(request data processing) -> controllers(data processing) -> low level clients (low level system interaction)
 - server has basic logging and error handling
-- configuration ands constants are kept in separate files
+- configuration and constants are kept in separate files
 - client uses an `apiKey` for a simple server authorization
 - eslint based on airbnb
-- user can add / rename / delete and search through components via basic `startsWith` name match and type check
+- user can add / rename / delete and search through storage items via basic `startsWith` name match and type check
 
 # Deploying application
 
