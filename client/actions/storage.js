@@ -20,17 +20,17 @@ export const fetchStorageList = query => async (dispatch) => {
 
 export const STORAGE_DELETE_ITEM_INIT = 'STORAGE_DELETE_ITEM_INIT'
 export const STORAGE_DELETE_ITEM_SUCCESS = 'STORAGE_DELETE_ITEM_SUCCESS'
-export const removeStorageItem = filename => async (dispatch) => {
+export const removeStorageItem = item => async (dispatch) => {
   dispatch({
     type: STORAGE_DELETE_ITEM_INIT,
   })
-  await queryApi('/storage/files', {
+  const result = await queryApi('/storage/files', {
     method: 'DELETE',
-    body: { filename },
+    body: { filename: item.filename },
   })
   dispatch({
     type: STORAGE_DELETE_ITEM_SUCCESS,
-    payload: { filename },
+    payload: result,
   })
 }
 
@@ -55,7 +55,7 @@ export const uploadStorageItem = files => async (dispatch) => {
 
 export const STORAGE_UPDATE_ITEM_INIT = 'STORAGE_UPDATE_ITEM_INIT'
 export const STORAGE_UPDATE_ITEM_SUCCESS = 'STORAGE_UPDATE_ITEM_SUCCESS'
-export const updateStorageItem = (filename, newFilename) => async (dispatch) => {
+export const updateStorageItem = (item, newFilename) => async (dispatch) => {
   dispatch({
     type: STORAGE_UPDATE_ITEM_INIT,
   })
@@ -64,7 +64,7 @@ export const updateStorageItem = (filename, newFilename) => async (dispatch) => 
     result = await queryApi('/storage/files', {
       method: 'PUT',
       body: {
-        filename,
+        filename: item.filename,
         newFilename,
       },
     })
@@ -78,8 +78,8 @@ export const updateStorageItem = (filename, newFilename) => async (dispatch) => 
   dispatch({
     type: STORAGE_UPDATE_ITEM_SUCCESS,
     payload: {
-      ...result,
-      oldFilename: filename,
+      updatedItem: result,
+      oldId: item.id,
     },
   })
   toast.success('Item Updated!', {

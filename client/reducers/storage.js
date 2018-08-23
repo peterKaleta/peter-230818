@@ -20,13 +20,13 @@ export default function Storage(state = initialState, action) {
       return state.set('files', new List(action.payload.items))
     case STORAGE_DELETE_ITEM_SUCCESS:
       return state.set('files', state.get('files')
-        .filter(({ filename }) => filename !== action.payload.filename))
+        .filter(({ id }) => id !== action.payload.id))
     case STORAGE_UPLOAD_ITEM_SUCCESS:
       return state.set('files', state.get('files').push(action.payload))
     case STORAGE_UPDATE_ITEM_SUCCESS: {
-      const { oldFilename, filename } = action.payload
+      const { oldId, updatedItem } = action.payload
       return state.set('files', state.get('files')
-        .map(f => f.filename === oldFilename ? { ...f, filename } : f))
+        .map(f => f.id === oldId ? updatedItem : f))
     }
 
     default:

@@ -4,14 +4,14 @@ import { Button, FormControl } from 'react-bootstrap'
 
 class ListItem extends React.Component {
   static propTypes = {
-    filename: PropTypes.string,
+    item: PropTypes.object,
     onRemove: PropTypes.func,
     onChangeName: PropTypes.func,
   }
 
   constructor(props) {
     super(props)
-    const { filename: initialFilename } = props
+    const { item: { filename: initialFilename } } = props
     this.state = {
       isEditing: false,
       tempName: initialFilename,
@@ -28,12 +28,12 @@ class ListItem extends React.Component {
 
   onTempNameSubmit = () => {
     this.setState({ isEditing: false })
-    this.props.onChangeName(this.props.filename, this.state.tempName)
+    this.props.onChangeName(this.props.item, this.state.tempName)
   }
 
   renderLabel() {
     const { isEditing, tempName } = this.state
-    const { filename } = this.props
+    const { item } = this.props
     return isEditing
       ? <div className="list-item-edit">
             <FormControl
@@ -44,14 +44,14 @@ class ListItem extends React.Component {
             />
           <Button onClick={ this.onTempNameSubmit } bsStyle="info">Save</Button>
         </div>
-      : <div className="list-item-label" onClick={ this.startEdit }>{ filename }</div>
+      : <div className="list-item-label" onClick={ this.startEdit }>{ item.filename }</div>
   }
 
   render() {
-    const { filename, onRemove } = this.props
+    const { item, onRemove } = this.props
     return (<div className="list-item">
       { this.renderLabel() }
-      <Button onClick={ () => onRemove(filename) } bsStyle="danger">X</Button>
+      <Button onClick={ () => onRemove(item) } bsStyle="danger">X</Button>
     </div>)
   }
 }

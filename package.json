@@ -21,6 +21,7 @@
     "connected-react-router-immutable": "^2.0.0-alpha.6",
     "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
+    "crypto": "^1.0.1",
     "express": "^4.16.3",
     "express-async-router": "^0.1.13",
     "express-winston": "^3.0.0",

@@ -27,11 +27,11 @@ class StorageListPage extends React.Component {
     this.props.fetchStorageList()
   }
 
-  renderListItems = () => this.props.files.map((item, i) =>
-    <ListItem key={ i }
+  renderListItems = () => this.props.files.map(item =>
+    <ListItem key={ item.id }
       onChangeName={ this.props.updateStorageItem }
       onRemove={ this.props.removeStorageItem }
-      { ...item }
+      item={ item }
     />)
 
   renderNoItemsLabel = () => <div className="info">Your storage is empty</div>
