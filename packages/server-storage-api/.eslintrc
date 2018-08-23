@@ -1,0 +1,17 @@
+{
+    "parser": "babel-eslint",
+
+    "rules": {
+        "semi": ["error", "never"],
+        "implicit-arrow-linebreak": 0,
+        "import/no-named-as-default-member": 0,
+        "import/prefer-default-export": 0,
+        "no-confusing-arrow": 0
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "env": {
+        "browser": true
+    }
+}

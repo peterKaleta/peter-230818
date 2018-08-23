@@ -10,7 +10,7 @@ module.exports = {
     publicPath: '/',
   },
   devServer: {
-    contentBase: './dist',
+    contentBase: './build',
     publicPath: '/',
   },
   module: {
