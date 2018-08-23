@@ -5,8 +5,8 @@ A `REACT CLIENT` exposed Aby static server communicating with a separate `STORAG
 
 ## Techstack
 - general: docker, eslint, yarn 
-- client: react, redux, thunk, react-bootstrap, jest, 
-- serverside: express, 
+- client: react, redux, thunk, react-bootstrap, jest, Immutable
+- serverside: express, multer
 
 ### Implementation notes
 - I've based the solution loosely on a couple of modern boilerplates but almost everything was coded by hand
@@ -15,7 +15,8 @@ A `REACT CLIENT` exposed Aby static server communicating with a separate `STORAG
   - `client`: standard redux flow loop  .-> Reducers -> Store -> HOCs -> Containers -> Componenets -> Dispatch -> .
   - `server`: middlewares(request meta processing) -> api(request data processing) -> controllers(data processing) -> low level clients (low level system interaction)
 - server has basic logging and error handling
-- configuration is kept in separate files
+- configuration ands constants are kept in separate files
+- client users an `apiKey` for a simple server authorization
   
 
 # Deploying application
@@ -38,7 +39,7 @@ docker-compose up
 General
 - https communication
 - persistent store solution to avoid hashbased id callculation
-- typescript or flow 
+- typescript or flow for typechecking
 - configuration through ENV
 
 Serverside
