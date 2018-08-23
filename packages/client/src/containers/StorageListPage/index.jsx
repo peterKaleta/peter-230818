@@ -52,7 +52,9 @@ class StorageListPage extends React.Component {
             <p className={ styles.dropZoneLabel }>Click to upload a file</p>
         </Dropzone>
         <Searchbar onUpdate={ throttledFetchStorage } />
-        { this.props.files.size ? this.renderListItems() : this.renderNoItemsLabel() }
+        <div className={ styles.storageList }>
+          { this.props.files.size ? this.renderListItems() : this.renderNoItemsLabel() }
+        </div>
       </div>
     )
   }

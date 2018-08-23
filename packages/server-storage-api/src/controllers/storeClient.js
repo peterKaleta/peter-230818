@@ -21,11 +21,20 @@ export const renameFile = async (key, oldName, newName) => {
 }
 
 export const insertFile = async (req, res, key) => {
+  let filename
   const multerStorage = multer.diskStorage({
     destination: (r, file, cb) => { cb(null, getDir(key)) },
-    filename: (r, file, cb) => { cb(null, file.fieldname) },
+    filename: (r, file, cb) => {
+      let path = getFilePath(key, file.fieldname)
+      filename = file.fieldname
+      while (fs.existsSync(path)) {
+        filename = `copy_${filename}`
+        path = getFilePath(key, filename)
+      }
+      cb(null, file.fieldname)
+    },
   })
   const uploader = util.promisify(multer({ storage: multerStorage }).any())
   await uploader(req, res)
-  return { files: req.files }
+  return { filename }
 }

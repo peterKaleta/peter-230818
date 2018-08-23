@@ -18,9 +18,9 @@ export const listStore = async (key) => {
   return data.map(filename => parseStorageItem(key, filename))
 }
 
-export const insertFile = async (req, res, next, key) => {
-  const data = await storeClient.insertFile(req, res, next, key)
-  const [{ fieldname: filename }] = data.files
+export const insertFile = async (req, res, key) => {
+  const data = await storeClient.insertFile(req, res, key)
+  const { filename } = data
   return parseStorageItem(key, filename)
 }
 

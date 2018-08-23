@@ -25,7 +25,10 @@
   vertical-align: middle;
   width: 100%;
   cursor: pointer;
-  & :hover{
+  text-overflow: ellipsis;
+  overflow: hidden;
+  margin-right: 5px;
+  &:hover{
     text-decoration: underline;
   }
 }

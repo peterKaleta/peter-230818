@@ -45,7 +45,12 @@ class ListItem extends React.Component {
             />
           <Button onClick={ this.onTempNameSubmit } bsStyle="info">Save</Button>
         </div>
-      : <div className={ styles.listItemLabel } onClick={ this.startEdit }>{ item.filename }</div>
+      : <div
+          title={ item.filename }
+          className={ styles.listItemLabel }
+          onClick={ this.startEdit }>
+            { item.filename }
+        </div>
   }
 
   render() {

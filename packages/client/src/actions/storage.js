@@ -14,7 +14,7 @@ export const fetchStorageList = (query, type) => async (dispatch) => {
   try {
     result = await queryApi(`/storage?${queryString}`)
   } catch (e) {
-    ToastStore.error('Problem with loading the translation list')
+    ToastStore.error('Problem with loading your storage items')
     return
   }
 
