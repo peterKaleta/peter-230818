@@ -33,6 +33,7 @@ export const query = (path, options = {}) => {
   return fetch(getApiUrl(path), opts)
     .then(processStatus)
     .then(parseJSON)
+    .catch((e) => { throw new Error(e) })
 }
 
 export default query

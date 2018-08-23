@@ -59,13 +59,22 @@ export const updateStorageItem = (filename, newFilename) => async (dispatch) => 
   dispatch({
     type: STORAGE_UPDATE_ITEM_INIT,
   })
-  const result = await queryApi('/storage/files', {
-    method: 'PUT',
-    body: {
-      filename,
-      newFilename,
-    },
-  })
+  let result
+  try {
+    result = await queryApi('/storage/files', {
+      method: 'PUT',
+      body: {
+        filename,
+        newFilename,
+      },
+    })
+  } catch (e) {
+    toast.error('Item failed to update!', {
+      position: toast.POSITION.BOTTOM_CENTER,
+    })
+    return
+  }
+
   dispatch({
     type: STORAGE_UPDATE_ITEM_SUCCESS,
     payload: {
