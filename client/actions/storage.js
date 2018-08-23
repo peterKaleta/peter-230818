@@ -1,4 +1,5 @@
 import qs from 'qs'
+import { toast } from 'react-toastify'
 import queryApi from '../utils/apiClient'
 
 export const STORAGE_FETCH_INIT = 'STORAGE_FETCH_INIT'
@@ -71,5 +72,8 @@ export const updateStorageItem = (filename, newFilename) => async (dispatch) => 
       ...result,
       oldFilename: filename,
     },
+  })
+  toast.success('Item Updated!', {
+    position: toast.POSITION.BOTTOM_CENTER,
   })
 }
