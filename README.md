@@ -5,7 +5,7 @@ A `REACT CLIENT` exposed Aby static server communicating with a separate `STORAG
 
 ## Recorded demo
 
-Video summarising core functionalisties https://drive.google.com/file/d/1pDvnyJ_qwKkxWwfxd1qkBs0pltfXGxBb/view?usp=sharing
+Video summarizing core functionalities https://drive.google.com/file/d/1pDvnyJ_qwKkxWwfxd1qkBs0pltfXGxBb/view?usp=sharing
 
 ## Techstack
 - general: docker, eslint, yarn 
@@ -37,7 +37,6 @@ docker-compose up
 // start browser on localhost:8080, the apiServer is accessible under localhost:8989
 // alternatively each package has a npm start script
 ```
-
 
 ## What I would add given more time:
 
