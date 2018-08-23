@@ -20,7 +20,7 @@ Video summarizing core functionalities https://drive.google.com/file/d/1pDvnyJ_q
   - `server`: middlewares(request meta processing) -> api(request data processing) -> controllers(data processing) -> low level clients (low level system interaction)
 - server has basic logging and error handling
 - configuration ands constants are kept in separate files
-- client users an `apiKey` for a simple server authorization
+- client uses an `apiKey` for a simple server authorization
 - eslint based on airbnb
 - user can add / rename / delete and search through components via basic `startsWith` name match and type check
 
