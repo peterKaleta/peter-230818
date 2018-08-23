@@ -35,9 +35,13 @@ class StorageListPage extends React.Component {
       item={ item }
     />)
 
-  renderNoItemsLabel = () => <div className={ styles.storageListInfo }>Your storage is empty</div>
+  renderNoItemsLabel = () =>
+    <div className={ styles.storageListInfo }>No items found in storage</div>
 
   render() {
+    const throttledFetchStorage = throttle((queryName, queryType) =>
+      this.props.fetchStorageList(queryName, queryType), 800)
+
     return (
       <div>
         <Dropzone
@@ -47,7 +51,7 @@ class StorageListPage extends React.Component {
           >
             <p className={ styles.dropZoneLabel }>Click to upload a file</p>
         </Dropzone>
-        <Searchbar onUpdate={ throttle(q => this.props.fetchStorageList(q), 800) } />
+        <Searchbar onUpdate={ throttledFetchStorage } />
         { this.props.files.size ? this.renderListItems() : this.renderNoItemsLabel() }
       </div>
     )
