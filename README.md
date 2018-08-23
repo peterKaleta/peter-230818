@@ -1,7 +1,7 @@
 # Description
 
 ## Solution
-A `REACT CLIENT` exposed Aby static server communicating with a separate `STORAGE API SERVER` [architecture diagram : https://drive.google.com/open?id=1nB_6Y6fM43p-RpKYn_R1aY-b94JODAap]. The reasoning here was to create a decoupled service/client pair that could be accessed and scaled=up without limitation. The architecture is reflected in the repo which is divided into two packages with their own `package.json` files.
+A `REACT CLIENT` exposed through a static server and communicating with a separate `STORAGE API SERVER` [architecture diagram : https://drive.google.com/open?id=1nB_6Y6fM43p-RpKYn_R1aY-b94JODAap]. The architecture is reflected in the repo which is divided into two packages with their own `package.json` files.
 
 ## Recorded demo
 
