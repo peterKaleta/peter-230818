@@ -1,5 +1,4 @@
 import qs from 'qs'
-import { toast } from 'react-toastify'
 import queryApi from '../utils/apiClient'
 
 export const STORAGE_FETCH_INIT = 'STORAGE_FETCH_INIT'
@@ -9,7 +8,13 @@ export const fetchStorageList = query => async (dispatch) => {
     type: STORAGE_FETCH_INIT,
   })
   const queryString = qs.stringify({ q: query })
-  const result = await queryApi(`/storage?${queryString}`)
+  let result
+  try {
+    result = await queryApi(`/storage?${queryString}`)
+  } catch (e) {
+    return
+  }
+
   dispatch({
     type: STORAGE_FETCH_SUCCESS,
     payload: {
@@ -69,9 +74,6 @@ export const updateStorageItem = (item, newFilename) => async (dispatch) => {
       },
     })
   } catch (e) {
-    toast.error('Item failed to update!', {
-      position: toast.POSITION.BOTTOM_CENTER,
-    })
     return
   }
 
@@ -81,8 +83,5 @@ export const updateStorageItem = (item, newFilename) => async (dispatch) => {
       updatedItem: result,
       oldId: item.id,
     },
-  })
-  toast.success('Item Updated!', {
-    position: toast.POSITION.BOTTOM_CENTER,
   })
 }

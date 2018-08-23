@@ -1,0 +1,31 @@
+.listItem {
+  display: flex;
+  vertical-align: middle;
+  padding: 20px 5px;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  &:last-child{
+    border-bottom: none;
+  }
+}
+
+.listItemEdit {
+  display: flex;
+  vertical-align: middle;
+  width: 100%;
+  box-sizing: border-box;
+  button {
+    margin: 0 10px;
+    width:60px;
+  }
+}
+
+.listItemLabel {
+  line-height: 34px;
+  vertical-align: middle;
+  width: 100%;
+  cursor: pointer;
+  & :hover{
+    text-decoration: underline;
+  }
+}

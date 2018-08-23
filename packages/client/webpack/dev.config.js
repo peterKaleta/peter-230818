@@ -1,4 +1,3 @@
-const path = require('path')
 const paths = require('./paths')
 
 module.exports = {
@@ -18,12 +17,20 @@ module.exports = {
       {
         test: /\.(css|scss)$/,
         use: [
-          'style-loader',
-          'css-loader',
+          {
+            loader: 'style-loader',
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              localIdentName: '[local]___[hash:base64:5]',
+            },
+          },
           {
             loader: 'sass-loader',
             options: {
-              includePaths: [path.resolve(__dirname, '../node_modules')],
+              includePaths: ['../node_modules'],
             },
           },
         ],

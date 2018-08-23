@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { FormControl } from 'react-bootstrap'
+import * as styles from './styles.scss'
 
 class SearchBar extends React.Component {
   static propTypes = {
@@ -27,7 +28,7 @@ class SearchBar extends React.Component {
 
   render() {
     const { query } = this.state
-    return (<div className="search-bar-wrapper">
+    return (<div className={ styles.searchBarWrapper }>
       <FormControl
         type="text"
         value={query}

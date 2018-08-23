@@ -4,7 +4,7 @@
   "description": "Client App for Kraken Test Task",
   "main": "index.js",
   "scripts": {
-    "start": " ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --mode development",
+    "start": " ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --mode development ./src",
     "lint": "./node_modules/.bin/eslint --format \"node_modules/eslint-friendly-formatter\"  --ext .js --ext .jsx ./src",
     "build": "webpack --config webpack.config.js --mode development",
     "test": "jest"
@@ -29,7 +29,6 @@
     "react-immutable-proptypes": "^2.1.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
-    "react-toastify": "^4.2.0",
     "redux": "^4.0.0",
     "redux-immutable": "^4.0.0",
     "redux-thunk": "^2.3.0"

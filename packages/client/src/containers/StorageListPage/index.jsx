@@ -7,6 +7,7 @@ import { throttle } from 'lodash'
 import * as storeActions from '../../actions/storage'
 import ListItem from '../../components/ListItem'
 import Searchbar from '../../components/Searchbar'
+import * as styles from './styles.scss'
 
 class StorageListPage extends React.Component {
   static propTypes = {
@@ -34,13 +35,17 @@ class StorageListPage extends React.Component {
       item={ item }
     />)
 
-  renderNoItemsLabel = () => <div className="info">Your storage is empty</div>
+  renderNoItemsLabel = () => <div className={ styles.storageListInfo }>Your storage is empty</div>
 
   render() {
     return (
-      <div className="storage-list">
-        <Dropzone multiple={ false } className="drop-zone" onDrop={ this.props.uploadStorageItem }>
-          <p className="drop-zone-label">Click to upload a file</p>
+      <div>
+        <Dropzone
+          multiple={ false }
+          className={ styles.dropZone }
+          onDrop={ this.props.uploadStorageItem }
+          >
+            <p className={ styles.dropZoneLabel }>Click to upload a file</p>
         </Dropzone>
         <Searchbar onUpdate={ throttle(q => this.props.fetchStorageList(q), 800) } />
         { this.props.files.size ? this.renderListItems() : this.renderNoItemsLabel() }
