@@ -31,7 +31,7 @@ export const insertFile = async (req, res, key) => {
         filename = `copy_${filename}`
         path = getFilePath(key, filename)
       }
-      cb(null, file.fieldname)
+      cb(null, filename)
     },
   })
   const uploader = util.promisify(multer({ storage: multerStorage }).any())
