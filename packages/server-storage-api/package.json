@@ -6,7 +6,7 @@
   "scripts": {
     "start": "./node_modules/.bin/babel-node src/index.js",
     "dev": "./node_modules/nodemon/bin/nodemon.js --watch ./server-storage-api --ext js --exec node_modules/.bin/babel-node ./src/index.js",
-    "lint": "./node_modules/.bin/eslint --format \"node_modules/eslint-friendly-formatter\"  --ext .js src",
+    "lint": "./node_modules/.bin/eslint --format \"node_modules/eslint-friendly-formatter\"  --ext .js ./src/**/*.js",
     "test": ""
   },
   "author": "Peter Kaleta",

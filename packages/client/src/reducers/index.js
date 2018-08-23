@@ -2,7 +2,6 @@ import { fromJS } from 'immutable'
 import { combineReducers } from 'redux-immutable'
 import { LOCATION_CHANGE } from 'connected-react-router/immutable'
 
-import appReducer from '../containers/App/reducer'
 import storageReducer from './storage'
 
 const routeInitialState = fromJS({
@@ -24,7 +23,6 @@ export function routeReducer(state = routeInitialState, action) {
 export default function createReducer() {
   return combineReducers({
     route: routeReducer,
-    app: appReducer,
     storage: storageReducer,
   })
 }

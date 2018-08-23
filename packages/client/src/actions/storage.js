@@ -1,4 +1,6 @@
 import qs from 'qs'
+import { ToastStore } from 'react-toasts'
+
 import queryApi from '../utils/apiClient'
 
 export const STORAGE_FETCH_INIT = 'STORAGE_FETCH_INIT'
@@ -12,6 +14,7 @@ export const fetchStorageList = query => async (dispatch) => {
   try {
     result = await queryApi(`/storage?${queryString}`)
   } catch (e) {
+    ToastStore.error('Problem with loading the translation list')
     return
   }
 
@@ -74,6 +77,7 @@ export const updateStorageItem = (item, newFilename) => async (dispatch) => {
       },
     })
   } catch (e) {
+    ToastStore.error('Couldn\'t update the item')
     return
   }
 
@@ -84,4 +88,5 @@ export const updateStorageItem = (item, newFilename) => async (dispatch) => {
       oldId: item.id,
     },
   })
+  ToastStore.success('Item updated!')
 }
