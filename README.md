@@ -51,9 +51,9 @@ Serverside
 - tests & test coverage
 - handle crashes gracefully
 - pagination
+- model/collection layer
 
 Client
-- server model/collection layer
 - error handling and logging
 - config injection
 - more data sanitisation beyond the react one
@@ -63,3 +63,4 @@ Client
 - separate chunks in webpack
 - react router used for query handling
 - translations
+- extract api from actions
